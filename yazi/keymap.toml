@@ -1,0 +1,106 @@
+# A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
+# If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
+"$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
+
+[[manager.prepend_keymap]]
+on   = "T"
+run  = "plugin --sync max-preview"
+desc = "Maximize or restore preview"
+
+# # Yank save to clipboard
+# [[manager.prepend_keymap]]
+# on  = "y"
+# run = [ '''
+# 	shell 'echo "$@" | pbcopy
+# ''', "yank" ]
+# # run = [ '''
+# 	# shell 'echo "$@" | xclip -i -selection clipboard -t text/uri-list' --confirm
+# # ''', "yank" ]
+
+# <C-s> open shell on current
+[[manager.prepend_keymap]]
+on   = "<C-s>"
+run  = 'shell "$SHELL" --block --confirm'
+desc = "Open shell here"
+# Dragon drag and drop
+[[manager.prepend_keymap]]
+on  = "<C-n>"
+run = '''
+	shell 'dragon --all --and-exit --icon-only --on-top --verbose "$@"' --confirm
+'''
+desc = "Create drag and drop"
+# go to desktop
+[[manager.prepend_keymap]]
+on  = ["g","d","e"]
+run = '''
+	cd ~/Desktop
+'''
+desc = "Go to desktop"
+# go to dowloads
+[[manager.prepend_keymap]]
+on  = ["g","d","w"]
+run = '''
+	cd ~/Downloads
+'''
+desc = "Go to downloads"
+# go to documents
+[[manager.prepend_keymap]]
+on  = ["g","d","c"]
+run = '''
+	cd ~/Documents
+'''
+desc = "Go to documents"
+# go to icloud
+[[manager.prepend_keymap]]
+on  = ["g","i"]
+run = '''
+	cd ~/Library/Mobile\ Documents/com~apple~CloudDocs
+'''
+desc = "Go to iCloud"
+# go to icloud
+[[manager.prepend_keymap]]
+on  = ["g","v"]
+run = '''
+	cd /Volumes
+'''
+desc = "Go to volumes"
+# go to Trash
+[[manager.prepend_keymap]]
+on  = ["g","x"]
+run = '''
+	cd ~/.Trash
+'''
+desc = "Go to trash"
+# go to Trash
+[[manager.prepend_keymap]]
+on  = ["g","X"]
+run = '''
+	cd ~/Library/Mobile\ Documents/.Trash
+'''
+desc = "Go to trash icloud"
+# go to Applications
+[[manager.prepend_keymap]]
+on  = ["g","a"]
+run = '''
+	cd /Applications
+'''
+desc = "Go to Applications"
+# # rename uses neovim
+# [[manager.prepend_keymap]]
+# on  = [ "r" ]
+# run = [ "select --state=none", "rename --cursor=before_ext" ]
+# desc  = "rename"
+# refresh page
+[[manager.prepend_keymap]]
+on  = "R"
+run = "refresh"
+desc = "refresh yazi"
+[[manager.prepend_keymap]]
+# on   = [ "c", "a" ]
+on   = [ "P" ]
+run  = "plugin compress"
+desc = "Archive selected files"
+[[manager.prepend_keymap]]
+on   = "<C-l>"
+run  = "plugin lazygit"
+desc = "run lazygit"

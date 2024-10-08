@@ -1,0 +1,204 @@
+{
+  "title": "My Complex-Modifications",
+  "rules": [
+    {
+      "description": "ctrl+left click to left click",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "pointing_button": "button1",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "pointing_button": "button1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "fn+(F7|F8|F9) keys should only control Music.",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f7",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ]
+            }
+          },
+          "to_if_alone": [
+            {
+              "shell_command": "osascript -e 'if application \"Music\" is running then' -e 'tell application \"Music\" to back track' -e 'end if'"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "shell_command": "osascript -e 'if application \"Music\" is running then' -e 'if application \"Music\" is running then' -e 'tell application \"Music\" to rewind' -e 'end if'"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f8",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e 'if application \"Music\" is running then' -e 'tell application \"Music\" to playpause' -e 'end if'"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f9",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ]
+            }
+          },
+          "to_if_alone": [
+            {
+              "shell_command": "osascript -e 'if application \"Music\" is running then' -e 'tell application \"Music\" to next track' -e 'end if'"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "shell_command": "osascript -e 'if application \"Music\" is running then' -e 'tell application \"Music\" to fast forward' -e 'end if'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Control Music Volume",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f12",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "control"
+              ]
+            }
+          },
+          "to_if_held_down": [
+            {
+              "shell_command": "osascript -e 'if application \"Music\" is running then' -e 'tell application \"Music\"' -e 'set the sound volume to sound volume + 5' -e 'end tell' -e 'end if'"
+            }
+          ],
+          "to": [
+            {
+              "shell_command": "osascript -e 'if application \"Music\" is running then' -e 'tell application \"Music\"' -e 'set the sound volume to sound volume + 10' -e 'end tell' -e 'end if'"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f11",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "control"
+              ]
+            }
+          },
+          "to_if_held_down": [
+            {
+              "shell_command": "osascript -e 'if application \"Music\" is running then' -e 'tell application \"Music\"' -e 'set the sound volume to sound volume - 5' -e 'end tell' -e 'end if'"
+            }
+          ],
+          "to": [
+            {
+              "shell_command": "osascript -e 'if application \"Music\" is running then' -e 'tell application \"Music\"' -e 'set the sound volume to sound volume - 10' -e 'end tell' -e 'end if'"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f12",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e 'if application \"Music\" is running then' -e 'tell application \"Music\"' -e 'set the sound volume to sound volume + 2.5' -e 'end tell' -e 'end if'"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f11",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e 'if application \"Music\" is running then' -e 'tell application \"Music\"' -e 'set the sound volume to sound volume - 2.5' -e 'end tell' -e 'end if'"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f12",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ]
+            }
+          },
+          "to": [
+            {
+              "consumer_key_code": "volume_increment"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f11",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ]
+            }
+          },
+          "to": [
+            {
+              "consumer_key_code": "volume_decrement"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

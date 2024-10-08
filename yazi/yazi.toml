@@ -1,0 +1,59 @@
+# A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
+# If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
+"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
+
+[manager]
+show_hidden = true
+show_symlink = true
+syntect_theme = "~/.config/bat/themes/Catppuccin Mocha.tmTheme"
+[preview]
+max_width = 3000
+max_height = 1964
+image_delay = 60
+[opener]
+edit = [
+  { run = '${EDITOR:-nvim} "$@"', desc = "edit", block = true, for = "unix" },
+]
+nvim = [
+  { run  = 'nvim', desc = "nvim", block = true, for = "unix" },
+]
+play = [
+	# { run = 'iina --mpv-force-window "$@"', orphan = true, for = "macos" },
+	{ run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
+	{ run = 'mpv --force-window %*', orphan = true, for = "windows" },
+	{ run = '''ffprobe "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
+	# { run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
+]
+zathura = [
+  { run = 'zathura "$@"', orphan = true,  for = "unix" },
+]
+copy = [
+  { run = 'pbcopy < "$@"', desc="copy", for = "macos" },
+]
+code = [
+  { run = 'code "$@"', desc="code", for="unix" },
+]
+[open]
+prepend_rules = [
+  { mime = "application/pdf", use = [ "zathura", "open", "reveal" ] },
+  { mime = "text/*", use = [ "edit", "copy", "reveal", "code" ] },
+  { name = ".gitignore", use = [ "edit", "copy", "reveal", "code" ] },
+  { name = "*/", use = [ "nvim", "edit", "open", "reveal", "code" ] },
+]
+append_rules = [
+  { name = "*", use = [ "edit", "copy", "open", "nvim", "reveal", "code"] }
+]
+[plugin]
+prepend_previwers = [
+  # # HEIC previwer
+  # { mime = "image/heic", run = "heic" }
+  { name = "*.md", run = "glow" },
+  { mime = "text/csv", run = "miller"},
+  # torrent-preview.yazi - preview torrents info
+  { mime = "application/x-bittorrent", run = "torrent-preview" },
+  # # mediainfo.yazi - preview metadata
+  # { mime = "{image,audio,video}/*", run = "mediainfo"},
+  # { mime = "application/x-subrip", run = "mediainfo"},
+  # exifaudio.yazi - preview audio with thumb and metadata
+  { mime = "audio/*", run = "exifaudio"}
+]

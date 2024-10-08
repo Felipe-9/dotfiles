@@ -1,0 +1,66 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+    "theme": {
+        "mode": "system",
+        "dark": "Material Dark",
+        "light": "Material Dark"
+    },
+    // FONT
+    "ui_font_size": 20,
+    "buffer_font_size": 20,
+    // "buffer_font_weight": 400,
+    // "buffer_line_height": "comfortable",
+    "buffer_font_family": "Fira Code",
+    "buffer_font_features": {
+        "ss01": true, // r
+        "ss04": true, // $
+        "ss06": true, // \\
+        "ss07": true, // =~ !~
+        "ss09": true, // >>= <<= ||= |=
+        "cv15": false, // *
+        "cv16": false, // *
+        "cv17": false, // ~
+        "cv18": false, // %
+        "cv25": true, // .-
+        "cv26": true, // :-
+        "cv29": true, // {}
+        "cv30": true, // |
+        "cv31": false, // ()
+        "cv32": true // .=
+    },
+    "tab_size": 4,
+    "active_pane_magnification": 2,
+    "autosave": "on_focus_change",
+    "confirm_quit": true,
+    // "load_direnv": "shell_hook"
+    "current_line_highlight": "gutter",
+    "tabs": {
+        "file_icons": true,
+        "git_status": true
+    },
+    "formatter": "language_server",
+    "file_types": {
+        "latex": [
+            "tex"
+        ]
+    },
+    "indent_guides": {
+        "line_width": 2,
+        "active_line_width": 2,
+        "coloring": "indent_aware",
+        "background_coloring": "disabled"
+    },
+    "inlay_hints": {
+        "enabled": false
+    },
+    "journal": {
+        "hour_format": "hour24"
+    }
+}

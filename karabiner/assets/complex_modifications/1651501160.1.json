@@ -1,0 +1,122 @@
+{
+  "title": "Control Music Volume",
+  "rules": [
+    {
+      "description": "Control Music Volume",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f12",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "control"
+              ]
+            }
+          },
+          "to_if_held_down": [
+            {
+              "shell_command": "osascript -e 'if application \"Music\" is running then' -e 'tell application \"Music\"' -e 'set the sound volume to sound volume + 5' -e 'end tell' -e 'end if'"
+            }
+          ],
+          "to": [
+            {
+              "shell_command": "osascript -e 'if application \"Music\" is running then' -e 'tell application \"Music\"' -e 'set the sound volume to sound volume + 10' -e 'end tell' -e 'end if'"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f11",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "control"
+              ]
+            }
+          },
+          "to_if_held_down": [
+            {
+              "shell_command": "osascript -e 'if application \"Music\" is running then' -e 'tell application \"Music\"' -e 'set the sound volume to sound volume - 5' -e 'end tell' -e 'end if'"
+            }
+          ],
+          "to": [
+            {
+              "shell_command": "osascript -e 'if application \"Music\" is running then' -e 'tell application \"Music\"' -e 'set the sound volume to sound volume - 10' -e 'end tell' -e 'end if'"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f12",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e 'if application \"Music\" is running then' -e 'tell application \"Music\"' -e 'set the sound volume to sound volume + 2.5' -e 'end tell' -e 'end if'"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f11",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "osascript -e 'if application \"Music\" is running then' -e 'tell application \"Music\"' -e 'set the sound volume to sound volume - 2.5' -e 'end tell' -e 'end if'"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f12",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "volume_increment"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f11",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "volume_decrement"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
