@@ -36,12 +36,13 @@ code = [
 [open]
 prepend_rules = [
   { mime = "application/pdf", use = [ "zathura", "open", "reveal" ] },
-  { mime = "text/*", use = [ "edit", "copy", "reveal", "code" ] },
+  { mime = "text/*", use = [ "edit", "copy", "nvim", "code", "reveal", ] },
+  { name = "*.tex", use = [ "edit", "copy", "nvim", "code", "reveal", ] },
   { name = ".gitignore", use = [ "edit", "copy", "reveal", "code" ] },
   { name = "*/", use = [ "nvim", "edit", "open", "reveal", "code" ] },
 ]
 append_rules = [
-  { name = "*", use = [ "edit", "copy", "open", "nvim", "reveal", "code"] }
+  { name = "*", use = [ "edit", "copy", "open", "reveal", "nvim", "code"] }
 ]
 [plugin]
 prepend_previwers = [
